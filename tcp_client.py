@@ -7,7 +7,7 @@ use python "input->" function, enter a line of a few letters, such as "abcd"
 """
 import socket
 HOST = "172.20.10.4"  # The server's hostname or IP address
-PORT = 10000
+PORT = 10001
 
 def main():
 
@@ -18,12 +18,11 @@ def main():
     # TODO: Receive a response from the server and close the TCP connection
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
       s.connect((HOST, PORT))
-      inp = input("Enter your message: ")
-      arr = bytes(inp,'utf-8')  
-      s.sendall(arr) 
-      data = s.recv(1024) 
-      print(data) 
-    pass
+      inp = input("Enter your message: ")  
+      s.send(inp.encode()) 
+      data = s.recv(256) 
+      print(data.decode()) 
+      s.close()
 
 
 if __name__ == '__main__':
