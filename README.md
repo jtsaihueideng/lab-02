@@ -55,7 +55,7 @@ The backlog variable is the maximum length that the queue of pending connections
 
 Answer for Question 6:
 
-
+The infinite loop is used to make sure the server is always available. Based on the code below, errors can occur when invoking accept(), reading from the socket, or writing to the socket.
 
 Answer for Question 7:
 
